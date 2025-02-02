@@ -16,10 +16,13 @@ driver = webdriver.Chrome(service=service1)
 
 def login(url,userId, username, passId, password, clickId):
     driver.get(url)
-    element = wait(driver, timeout: 10).until(EC.presence_of_element_located(By.NAME,userId))
-    driver.find_element(By.NAME, value: userId).send_keys(username)
-    driver.find_element(By.NAME, value: passId).send_keys(password)
-    driver.find_element(By.NAME, value: clickId).click()
+    element = wait(driver, 10).until(EC.presence_of_element_located((By.NAME,userId)))
+    driver.find_element(By.NAME, userId).send_keys(username)
+    element = wait(driver, 10).until(EC.presence_of_element_located((By.NAME,passId)))
+    driver.find_element(By.NAME, passId).send_keys(password)
+    element = wait(driver, 10).until(EC.presence_of_element_located((By.NAME,clickId)))
+    driver.find_element(By.NAME, clickId).click()
 
 login(portal, "loginUser", myMkEmail, "enterPwd", myMkPassw, "loginSubmit")
+element = wait(driver, 10).until(EC.presence_of_element_located((By.NAME,"test12345")))
 #time.sleep(10)
