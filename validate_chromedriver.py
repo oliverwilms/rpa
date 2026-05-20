@@ -12,7 +12,7 @@ def main():
         # chrome_options.add_argument("--headless")  # Uncomment for headless mode
 
         # Path to your ChromeDriver (if not in PATH, set full path here)
-        service = Service(executable_path="chromedriver")
+        service = Service(executable_path="chromedriver.exe")
 
         # Start Chrome
         driver = webdriver.Chrome(service=service, options=chrome_options)
